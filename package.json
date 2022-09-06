@@ -1,0 +1,51 @@
+{
+  "name": "ejemplo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon --watch './**/*.ts' --exec 'node --experimental-specifier-resolution=node --loader ts-node/esm' src/index.ts",
+    "generate:product": "prisma generate --schema prisma/product.prisma",
+    "generate:eventstore": "prisma generate --schema prisma/eventstore.prisma",
+    "push:product": "npx prisma db push --schema prisma/product.prisma",
+    "push:eventstore": "npx prisma db push --schema prisma/eventstore.prisma",
+    "studio:product": "prisma studio --schema prisma/product.prisma",
+    "studio:eventstore": "prisma studio --schema prisma/eventstore.prisma",
+    "cp:prisma": "cp -a ./prisma ./dist/prisma",
+    "build": "tsc --build tsconfig.json && npm run cp:prisma"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/cors": "^2.8.12",
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.13",
+    "@types/express-rate-limit": "^6.0.0",
+    "@types/helmet": "^4.0.0",
+    "@types/hpp": "^0.2.2",
+    "@types/morgan": "^1.9.3",
+    "@types/node": "^18.7.14",
+    "nodemon": "^2.0.19",
+    "prisma": "^4.3.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.2"
+  },
+  "dependencies": {
+    "@prisma/client": "^4.3.1",
+    "colors": "^1.4.0",
+    "cors": "^2.8.5",
+    "cuid": "^2.1.8",
+    "dayjs": "^1.11.5",
+    "express": "^4.18.1",
+    "express-rate-limit": "^6.5.2",
+    "helmet": "^6.0.0",
+    "hpp": "^0.2.3",
+    "morgan": "^1.10.0",
+    "shallow-equal-object": "^1.1.1",
+    "slugify": "^1.6.5",
+    "winston": "^3.8.1",
+    "xss-clean": "^0.1.1"
+  }
+}

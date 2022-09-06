@@ -1,0 +1,20 @@
+//Ecommerce especifics models
+datasource db {
+    provider = "postgresql"
+    url      = env("ES_DATABASE_URL")
+}
+
+generator client {
+    provider      = "prisma-client-js"
+    output        = "./generated/eventStoreClient"
+    binaryTargets = ["native"]
+}
+
+model EventStore {
+    id        Int      @id @default(autoincrement())
+    streamId  String
+    eventName String
+    eventData Json
+    metaData  Json?
+    storedAt  DateTime @default(now())
+}

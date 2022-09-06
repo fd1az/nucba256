@@ -1,0 +1,20 @@
+//Ecommerce especifics models
+datasource db {
+    provider = "postgresql"
+    url      = env("PRODUCT_DATABASE_URL")
+}
+
+generator client {
+    provider      = "prisma-client-js"
+    output        = "./generated/productClient"
+    binaryTargets = ["native"]
+}
+
+model Product {
+    id        String   @id
+    title     String
+    slug      String
+    stock     Int
+    price     Float
+    createdAt DateTime @default(now())
+}

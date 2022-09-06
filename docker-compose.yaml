@@ -1,0 +1,26 @@
+# https://docs.docker.com/compose/compose-file
+# docker-compose up
+# docker-compose stop
+# docker-compose down
+version: '3'
+services:
+  postgres_test:
+    image: postgres:11
+    container_name: postgres_test
+    restart: always
+    expose:
+      - '5432'
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_DB=nucba_db
+      - POSTGRES_HOST_AUTH_METHOD=trust
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin123
+    volumes:
+      - '.db/data:/var/lib/postgresql/data'
+    networks:
+      - test
+networks:
+  test:
+    name: test
