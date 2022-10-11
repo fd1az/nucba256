@@ -64,7 +64,7 @@ export class IncrementStockCommand
 
     const product: Product = productOrError.getValue();
 
-    product.incrementStock(quantity);
+    product.incrementStock(quantity, req);
 
     try {
       await this.productRepo.save(product);

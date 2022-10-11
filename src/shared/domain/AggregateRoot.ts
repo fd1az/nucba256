@@ -18,6 +18,7 @@ export abstract class AggregateRoot<T> extends Entity<T> {
     this._domainEvents = [];
     events.forEach((event: IDomainEvent) => this.applyEvent(event));
   }
+
   get id(): UniqueEntityID {
     return this._id;
   }
